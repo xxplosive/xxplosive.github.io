@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD → Web Preview</title>
+
+    <!-- Markdown Parser (marked.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+
+    <!-- HTML Sanitizer (DOMPurify) -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="toolbar">
+        <h1 class="toolbar-title">
+            <span class="icon">📝</span>
+            MD → Web Preview
+        </h1>
+
+        <div class="toolbar-actions">
+            <button id="copyMarkdownBtn" class="btn btn-secondary" title="Copy Markdown">
+                <span class="btn-icon">📋</span>
+                Copy MD
+            </button>
+            <button id="copyHtmlBtn" class="btn btn-primary" title="Copy HTML (Ctrl/Cmd + C)">
+                <span class="btn-icon">📄</span>
+                Copy HTML
+            </button>
+            <button id="clearBtn" class="btn btn-secondary" title="Clear (Ctrl/Cmd + K)">
+                <span class="btn-icon">🗑️</span>
+                Clear
+            </button>
+            <button id="themeToggle" class="btn btn-icon-only" title="Toggle Dark Mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content: Split View -->
+    <main class="container">
+        <!-- Left Panel: Markdown Input -->
+        <section class="panel editor-panel">
+            <div class="panel-header">
+                <h2>Markdown</h2>
+                <span class="panel-hint">Type or paste your markdown here</span>
+            </div>
+            <textarea
+                id="markdownInput"
+                class="markdown-editor"
+                placeholder="Type your markdown here..."
+                spellcheck="false"
+            ></textarea>
+        </section>
+
+        <!-- Right Panel: Preview -->
+        <section class="panel preview-panel">
+            <div class="panel-header">
+                <h2>Preview</h2>
+                <span class="panel-hint">Live rendered output</span>
+            </div>
+            <div id="htmlPreview" class="markdown-preview"></div>
+        </section>
+    </main>
+
+    <!-- App Script -->
+    <script src="app.js"></script>
+</body>
+</html>
